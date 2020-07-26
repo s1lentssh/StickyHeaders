@@ -1,6 +1,7 @@
 package com.brandongogetap.stickyheaders;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.brandongogetap.stickyheaders.exposed.StickyHeaderHandler;
 import com.brandongogetap.stickyheaders.exposed.StickyHeaderListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +106,9 @@ public class StickyLayoutManager extends LinearLayoutManager {
     public void recalculateHeaderPositions() {
         cacheHeaderPositions();
         runPositionerInit();
+        positioner.setHeaderPositions(headerPositions);
+        positioner.updateHeaderState(
+                findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
     }
 
     @Override
@@ -207,6 +212,7 @@ public class StickyLayoutManager extends LinearLayoutManager {
         }
         if (positioner != null) {
             positioner.setHeaderPositions(headerPositions);
+            Log.d("ArraysDebug", Arrays.toString(headerPositions.toArray()));
         }
     }
 }

@@ -103,6 +103,7 @@ public class StickyLayoutManager extends LinearLayoutManager {
      */
     public void recalculateHeaderPositions() {
         cacheHeaderPositions();
+        runPositionerInit();
     }
 
     @Override

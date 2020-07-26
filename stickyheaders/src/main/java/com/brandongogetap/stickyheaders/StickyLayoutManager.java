@@ -98,6 +98,13 @@ public class StickyLayoutManager extends LinearLayoutManager {
         this.enforceParentViewRestrictions = false;
     }
 
+    /**
+     * Used to invalidate header positions in case if recycler changed items count
+     */
+    public void recalculateHeaderPositions() {
+        cacheHeaderPositions();
+    }
+
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
         super.onLayoutChildren(recycler, state);

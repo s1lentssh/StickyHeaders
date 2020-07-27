@@ -210,7 +210,6 @@ public class StickyLayoutManager extends LinearLayoutManager {
             positioner.setHeaderPositions(headerPositions);
         }
 
-        cacheHeaderPositions();
         runPositionerInit();
         positioner.setHeaderPositions(headerPositions);
         positioner.updateHeaderState(

@@ -19,6 +19,10 @@ import java.util.Map;
 
 final class StickyHeaderPositioner {
 
+    public View getCurrentHeader() {
+        return currentHeader;
+    }
+
     static final int NO_ELEVATION = -1;
     static final int DEFAULT_ELEVATION = 5;
 

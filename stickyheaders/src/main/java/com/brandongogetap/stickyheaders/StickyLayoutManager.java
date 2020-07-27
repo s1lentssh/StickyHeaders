@@ -21,6 +21,10 @@ import java.util.Map;
 
 public class StickyLayoutManager extends LinearLayoutManager {
 
+    public View getCurrentHeader() {
+        return positioner.getCurrentHeader();
+    }
+
     private StickyHeaderPositioner positioner;
     private StickyHeaderHandler headerHandler;
     private List<Integer> headerPositions = new ArrayList<>();
@@ -106,7 +110,7 @@ public class StickyLayoutManager extends LinearLayoutManager {
         if(!wasSetOnce) {
             cacheHeaderPositions();
             wasSetOnce = true;
-        } 
+        }
         if (positioner != null) {
             runPositionerInit();
         }

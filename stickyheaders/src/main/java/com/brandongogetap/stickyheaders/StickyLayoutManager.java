@@ -103,7 +103,7 @@ public class StickyLayoutManager extends LinearLayoutManager {
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
         super.onLayoutChildren(recycler, state);
-        cacheHeaderPositions();
+        //cacheHeaderPositions();
         if (positioner != null) {
             runPositionerInit();
         }

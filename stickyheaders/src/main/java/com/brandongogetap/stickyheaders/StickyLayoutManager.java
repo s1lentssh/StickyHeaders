@@ -206,6 +206,7 @@ public class StickyLayoutManager extends LinearLayoutManager {
         if (positioner != null) {
             positioner.setHeaderPositions(headerPositions);
         }
+        Log.d("ArraysDebug", "cacheWasCalled");
     }
 
     private Boolean wasSetOnce = false;

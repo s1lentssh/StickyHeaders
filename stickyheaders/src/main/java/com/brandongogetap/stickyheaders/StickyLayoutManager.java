@@ -103,7 +103,11 @@ public class StickyLayoutManager extends LinearLayoutManager {
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
         super.onLayoutChildren(recycler, state);
-        //cacheHeaderPositions();
+        if(!wasSetOnce) {
+            cacheHeaderPositions();
+        } else {
+            wasSetOnce = true;
+        }
         if (positioner != null) {
             runPositionerInit();
         }
@@ -203,6 +207,8 @@ public class StickyLayoutManager extends LinearLayoutManager {
             positioner.setHeaderPositions(headerPositions);
         }
     }
+
+    private Boolean wasSetOnce = false;
 
     public void setHeaderPositions(List<Integer> positions) {
         headerPositions = positions;

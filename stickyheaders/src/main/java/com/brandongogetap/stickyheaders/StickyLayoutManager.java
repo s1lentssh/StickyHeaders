@@ -105,9 +105,8 @@ public class StickyLayoutManager extends LinearLayoutManager {
         super.onLayoutChildren(recycler, state);
         if(!wasSetOnce) {
             cacheHeaderPositions();
-        } else {
             wasSetOnce = true;
-        }
+        } 
         if (positioner != null) {
             runPositionerInit();
         }

@@ -100,17 +100,6 @@ public class StickyLayoutManager extends LinearLayoutManager {
         this.enforceParentViewRestrictions = false;
     }
 
-    /**
-     * Used to invalidate header positions in case if recycler changed items count
-     */
-    public void recalculateHeaderPositions() {
-        cacheHeaderPositions();
-        runPositionerInit();
-        positioner.setHeaderPositions(headerPositions);
-        positioner.updateHeaderState(
-                findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
-    }
-
     @Override
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
         super.onLayoutChildren(recycler, state);
@@ -212,7 +201,20 @@ public class StickyLayoutManager extends LinearLayoutManager {
         }
         if (positioner != null) {
             positioner.setHeaderPositions(headerPositions);
-            Log.d("ArraysDebug", Arrays.toString(headerPositions.toArray()));
         }
+    }
+
+    public void setHeaderPositions(List<Integer> positions) {
+        headerPositions = positions;
+        if (positioner != null) {
+            positioner.setHeaderPositions(headerPositions);
+        }
+
+        cacheHeaderPositions();
+        runPositionerInit();
+        positioner.setHeaderPositions(headerPositions);
+        positioner.updateHeaderState(
+                findFirstVisibleItemPosition(), getVisibleHeaders(), viewRetriever, findFirstCompletelyVisibleItemPosition() == 0);
+
     }
 }
